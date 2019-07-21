@@ -1,0 +1,10 @@
+.header {
+	width: 100%;
+	height: auto;
+	background: grey;
+	font-size: 32px;
+}
+
+.container-fluid {
+	background: wheat;
+}
