@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-about-me',
@@ -13,15 +14,18 @@ export class AboutMeComponent implements OnInit {
   goalText;
   textCount;
   textList = [];
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.goal.subscribe(res => this.textList = res)
     this.textCount = this.textList.length;
   }
 
   clickSubmit() {
+    if (!this.goalText) return;
     this.textList.push(this.goalText);
     this.goalText = "";
     this.textCount = this.textList.length;
+    this.data.changeGoal(this.textList);
   }
 }

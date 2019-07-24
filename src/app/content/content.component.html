@@ -1,5 +1,19 @@
 <h4><small>Home</small></h4>
 <hr>
+<form (ngSubmit)='onSubmit(theform)' #theform='ngForm'>
+    <div class="form-group">
+        <input ngModel name="username" type="text" class="form-control" placeholder="{{'please enter username' | capitalize }}">
+    </div>
+    <div class="form-group">
+        <input ngModel type="password" name="password" class="form-control" placeholder="{{'please enter password' | capitalize}}">
+    </div>
+    <input type="submit" class="btn btn-primary">
+</form>
+<hr>
+<ul>
+    <li *ngFor="let g of gols"> {{g}}</li>
+</ul>
+<hr>
 <ul>
     <li *ngFor="let user of users" id={{user.id}}>
         <a [routerLink]="['/details', user.id, {name: user.name, email: user.email}]" href="">{{ user.name }}</a>

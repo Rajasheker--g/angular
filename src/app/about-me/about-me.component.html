@@ -10,6 +10,7 @@
     <input type="submit" [value]="input_btn_text" (click)='clickSubmit()'>
     <br>
     <span>Text List {{ textCount }}</span>
+    <hr>
     <span *ngFor="let t of textList">
         <p>{{t}}</p>
     </span>
