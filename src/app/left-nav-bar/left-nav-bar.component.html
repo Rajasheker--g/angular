@@ -1,4 +1,11 @@
-<ul class="breadcrumb">
-  <li><button routerLink="/home" appHome>Home</button></li>
-  <li><button routerLink="/aboutme" appHome>About Me</button></li>
+<!-- <ul> -->
+  <!-- <li><button routerLink="/home" appHome>Home</button></li> -->
+  <!-- <li><button routerLink="/aboutme" appHome>aboutme</button></li> -->
+  <!-- <li><button routerLink="/home" [ngClass]="{'btn btn-success': selectedItem == 'home'}" (click)="clickEvent($event, 'home')">Home</button></li> -->
+  <!-- <li><button routerLink="/aboutme"  [ngClass]="{'btn btn-success': selectedItem == 'aboutme'}" (click)="clickEvent($event, 'aboutme')">About Me</button></li> -->
+<!-- </ul> -->
+
+<ul>
+  <li><button routerLink="/home"  class="btn" [ngClass]="{'btn-success': selectedItem == 'home'}" (click)="clickEvent($event, 'home')">Home</button></li>
+  <li><button routerLink="/aboutme" class="btn"  [ngClass]="{'btn-success': selectedItem == 'aboutme'}" (click)="clickEvent($event, 'aboutme')">About Me</button></li>
 </ul>

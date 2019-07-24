@@ -1,1 +1,11 @@
-<p>content works!</p>
+<h4><small>Home</small></h4>
+<hr>
+<ul>
+    <li *ngFor="let user of users" id={{user.id}}>
+        <a [routerLink]="['/details', user.id, {name: user.name, email: user.email}]" href="">{{ user.name }}</a>
+        <ul>
+            <li>{{ user.email }}</li>
+            <li><a href="http://{{ user.website }}">{{ user.website }}</a></li>
+        </ul>
+    </li>
+</ul>

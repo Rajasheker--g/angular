@@ -1,1 +1,16 @@
-<p>about-me works!</p>
+<h4><small>About Me</small></h4>
+<hr>
+<p>{{'please select this month' | capitalize}}
+    <select>
+        <option *ngFor = "let i of months">{{i}}</option>
+    </select>
+</p>
+<form>
+    <input type="text" name="item" value="enter here" [(ngModel)]="goalText">
+    <input type="submit" [value]="input_btn_text" (click)='clickSubmit()'>
+    <br>
+    <span>Text List {{ textCount }}</span>
+    <span *ngFor="let t of textList">
+        <p>{{t}}</p>
+    </span>
+</form>
