@@ -1,25 +1,54 @@
 <h4><small>Home</small></h4>
 <hr>
-<form (ngSubmit)='onSubmit(theform)' #theform='ngForm'>
+<form (ngSubmit)='onSubmit(theform); theform.reset()' #theform='ngForm'>
     <div class="form-group">
-        <input ngModel name="username" type="text" class="form-control" placeholder="{{'please enter username' | capitalize }}">
+            <label for="username">Name</label>
+        <input ngModel id="username" name="username" type="text" class="form-control"
+            placeholder="{{'please enter username' | capitalize }}" required>
+        <!-- <div [hidden]="username || username"  class="alert alert-danger"> username is required</div> -->
     </div>
     <div class="form-group">
-        <input ngModel type="password" name="password" class="form-control" placeholder="{{'please enter password' | capitalize}}">
+        <input ngModel name="email" type="text" class="form-control"
+            placeholder="{{'please enter email' | capitalize }}" required>
     </div>
-    <input type="submit" class="btn btn-primary">
+    <div class="form-group">
+        <input ngModel name="website" type="text" class="form-control"
+            placeholder="{{'please enter website' | capitalize }}" required>
+    </div>
+    <!-- <div class="form-group">
+        <input ngModel type="password" name="password" class="form-control"
+            placeholder="{{'please enter password' | capitalize}}">
+    </div> -->
+    <div class="form-group">
+        <p>{{'please select this month' | capitalize}}</p>
+        <select class="form-control">
+            <option *ngFor = "let i of months" [value]='i'>{{i}}</option>
+        </select>
+    </div>
+    <input type="submit" class="btn btn-primary" [disabled]="!theform.form.valid">
 </form>
 <hr>
 <ul>
     <li *ngFor="let g of gols"> {{g}}</li>
 </ul>
 <hr>
-<ul>
-    <li *ngFor="let user of users" id={{user.id}}>
-        <a [routerLink]="['/details', user.id, {name: user.name, email: user.email}]" href="">{{ user.name }}</a>
-        <ul>
-            <li>{{ user.email }}</li>
-            <li><a href="http://{{ user.website }}">{{ user.website }}</a></li>
-        </ul>
-    </li>
-</ul>
+<app-user [user]="selecteduser"></app-user>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Show</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users?.reverse()" id={{user.id}} [class.active]="user == selecteduser">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td><a href="javascript:void(0)" (click)="onSelect(user)">Show</a></td>
+        </tr>
+    </tbody>
+</table>
+  

@@ -14,6 +14,7 @@ import { ContentComponent } from './content/content.component';
 import { HomeDirective } from './home.directive';
 import { CapitalizePipe } from './capitalize.pipe';
 import { DetailsComponent } from './details/details.component';
+import { UserComponent } from './components/user/user.component';
 
 // const appRoutes: Routes = [
 //   { path: 'aboutme', component: AboutMeComponent },
@@ -36,7 +37,8 @@ import { DetailsComponent } from './details/details.component';
     ContentComponent,
     HomeDirective,
     CapitalizePipe,
-    DetailsComponent
+    DetailsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
